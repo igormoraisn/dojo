@@ -14,3 +14,4 @@ Feature: Cat Fact API
     Scenario: Get list of breeds
         Given I send a GET request to breeds
         Then The API returns response 200
+        And The list of breeds is returned

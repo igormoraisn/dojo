@@ -38,3 +38,18 @@ def send_get_fact(context):
         assert_equal(str, type(fact['fact']))
         assert_equal(int, type(fact['length']))
         assert_equal(len(fact['fact']), fact['length'])
+
+
+@step('The list of breeds is returned')
+def send_get_fact(context):
+    for breed in context.response.json()['data']:
+        assert_is_not_none(breed['breed'])
+        assert_is_not_none(breed['country'])
+        assert_is_not_none(breed['origin'])
+        assert_is_not_none(breed['coat'])
+        assert_is_not_none(breed['pattern'])
+        assert_equal(str, type(breed['breed']))
+        assert_equal(str, type(breed['country']))
+        assert_equal(str, type(breed['origin']))
+        assert_equal(str, type(breed['coat']))
+        assert_equal(str, type(breed['pattern']))
