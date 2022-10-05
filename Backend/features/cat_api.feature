@@ -4,6 +4,7 @@ Feature: Cat Fact API
     Scenario: Get random fact
         Given I send a GET request to fact
         Then The API returns response 200
+        And The returned data is correct
 
     Scenario: Get random facts
         Given I send a GET request to facts

@@ -1,5 +1,5 @@
 from behave import step
-from nose.tools import assert_equal
+from nose.tools import assert_equal, assert_is_not_none
 import requests
 
 
@@ -21,3 +21,11 @@ def send_get_fact(context):
 @step('the API returns response {status_code}')
 def send_get_fact(context, status_code):
     assert_equal(context.response.status_code, int(status_code))
+
+
+@step('The returned data is correct')
+def send_get_fact(context):
+    assert_is_not_none(context.response.json()['fact'])
+    assert_equal(str, type(context.response.json()['fact']))
+    assert_equal(int, type(context.response.json()['length']))
+    assert_equal(len(context.response.json()['fact']), context.response.json()['length'])
