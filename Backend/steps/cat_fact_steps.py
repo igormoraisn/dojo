@@ -29,3 +29,12 @@ def send_get_fact(context):
     assert_equal(str, type(context.response.json()['fact']))
     assert_equal(int, type(context.response.json()['length']))
     assert_equal(len(context.response.json()['fact']), context.response.json()['length'])
+
+
+@step('The list of facts is returned')
+def send_get_fact(context):
+    for fact in context.response.json()['data']:
+        assert_is_not_none(fact['fact'])
+        assert_equal(str, type(fact['fact']))
+        assert_equal(int, type(fact['length']))
+        assert_equal(len(fact['fact']), fact['length'])

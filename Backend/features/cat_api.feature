@@ -9,6 +9,7 @@ Feature: Cat Fact API
     Scenario: Get random facts
         Given I send a GET request to facts
         Then The API returns response 200
+        And The list of facts is returned
 
     Scenario: Get list of breeds
         Given I send a GET request to breeds
