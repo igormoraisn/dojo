@@ -18,11 +18,6 @@ def send_get_fact(context):
     context.response = requests.get('https://catfact.ninja/breeds')
 
 
-@step('the API returns response {status_code}')
-def send_get_fact(context, status_code):
-    assert_equal(context.response.status_code, int(status_code))
-
-
 @step('The returned data is correct')
 def send_get_fact(context):
     assert_is_not_none(context.response.json()['fact'])
