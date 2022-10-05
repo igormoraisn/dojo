@@ -1,5 +1,5 @@
 Feature: Get Coffee
-    @esse
+
     Scenario: Get Coffee Image
         Given I send a GET request to Coffee image
         Then The API returns response 200
