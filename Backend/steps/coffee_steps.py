@@ -1,6 +1,7 @@
 from behave import step
 from nose.tools import assert_equal, assert_is_not_none
 import requests
+import wget
 
 
 @step('I send a GET request to Coffee image')
@@ -22,5 +23,9 @@ def step_impl(context):
 
 @step('The returned JSON is correct')
 def step_impl(context):
+    url = context.response.json()["file"]
+    print(url)
     assert_is_not_none(context.response.json()['file'])
     assert('https://coffee.alexflipnote.dev/' in context.response.json()['file'])
+    coffee_image = wget.download(url)
+    print(coffee_image)
