@@ -18,3 +18,9 @@ def step_impl(context):
     assert_is_not_none(context.response.content)
     coffee_image = open('random.jpg', 'wb')
     coffee_image.write(context.response.content)
+
+
+@step('The returned JSON is correct')
+def step_impl(context):
+    assert_is_not_none(context.response.json()['file'])
+    assert('https://coffee.alexflipnote.dev/' in context.response.json()['file'])
